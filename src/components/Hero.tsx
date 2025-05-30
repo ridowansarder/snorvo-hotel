@@ -1,6 +1,6 @@
 const Hero = () => {
   return (
-    <div className='relative flex flex-col justify-center items-center py-8 px-4 sm:px-6 md:px-10 lg:px-24 text-white bg-[url("/src/assets/heroImg.jpg")] bg-no-repeat bg-cover bg-center min-h-screen'>
+    <div className='relative flex flex-col justify-center items-center py-8 px-4 sm:px-6 md:px-10 lg:px-24 text-white bg-[url("/assets/heroImg.jpg")] bg-no-repeat bg-cover bg-center min-h-screen'>
       {/* overlay */}
       <div className="absolute inset-0 bg-black/60" />
 

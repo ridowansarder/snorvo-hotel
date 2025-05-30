@@ -1,4 +1,4 @@
-import { exclusiveOffers } from "@/assets/assets";
+import { exclusiveOffers } from "../../public/assets/assets";
 import { Button } from "./ui/button";
 import { ArrowRight } from "lucide-react";
 
@@ -24,14 +24,17 @@ const Offers = () => {
           {exclusiveOffers.map((offer) => (
             <div
               key={offer._id}
-              className="flex group flex-col md:flex-row items-center gap-6 mb-8 p-6 bg-cover bg-no-repeat rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300" style={{ backgroundImage: `url(${offer.image})` }}
+              className="flex group flex-col md:flex-row items-center gap-6 mb-8 p-6 bg-cover bg-no-repeat rounded-lg shadow-md hover:shadow-lg hover:scale-105 transition duration-300"
+              style={{ backgroundImage: `url(${offer.image})` }}
             >
               <div className="flex flex-col items-start">
-              <p className=" bg-gray-50 text-gray-950 px-2 py-1.5 text-sm rounded-full">{offer.priceOff}% OFF</p>
-                <h2 className="text-lg font-semibold text-gray-100 mt-4">{offer.title}</h2>
-                <p className="text-gray-300">
-                  {offer.description}
+                <p className=" bg-gray-50 text-gray-950 px-2 py-1.5 text-sm rounded-full">
+                  {offer.priceOff}% OFF
                 </p>
+                <h2 className="text-lg font-semibold text-gray-100 mt-4">
+                  {offer.title}
+                </h2>
+                <p className="text-gray-300">{offer.description}</p>
                 <Button className="mt-4">Book Now</Button>
               </div>
             </div>
