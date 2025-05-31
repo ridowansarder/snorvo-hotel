@@ -34,7 +34,7 @@ const Navbar = () => {
             {link.name}
             <div
               className={
-                "bg-white h-0.5 w-0 group-hover:w-full transition-all duration-300"
+                "bg-black h-0.5 w-0 group-hover:w-full transition-all duration-300"
               }
             />
           </a>

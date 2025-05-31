@@ -29,7 +29,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="text-lg text-gray-800">COMPANY</p>
+          <p className="text-lg text-gray-800 font-semibold">COMPANY</p>
           <ul className="mt-3 flex flex-col gap-2 text-sm">
             <li>
               <a href="#">About</a>
@@ -50,7 +50,7 @@ const Footer = () => {
         </div>
 
         <div>
-          <p className="text-lg text-gray-800">SUPPORT</p>
+          <p className="text-lg text-gray-800 font-semibold">SUPPORT</p>
           <ul className="mt-3 flex flex-col gap-2 text-sm">
             <li>
               <a href="#">Help Center</a>
@@ -71,7 +71,7 @@ const Footer = () => {
         </div>
 
         <div className="max-w-80">
-          <p className="text-lg text-gray-800">STAY UPDATED</p>
+          <p className="text-lg text-gray-800 font-semibold">STAY UPDATED</p>
           <p className="mt-3 text-sm">
             Subscribe to our newsletter for inspiration and special offers.
           </p>
