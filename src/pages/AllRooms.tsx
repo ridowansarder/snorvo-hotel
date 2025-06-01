@@ -1,9 +1,24 @@
 import { useNavigate } from "react-router-dom";
 import { facilityIcons, roomsDummyData } from "../../public/assets/assets";
 import { MapPin, Star } from "lucide-react";
+import { useState } from "react";
 
 const AllRooms = () => {
   const navigate = useNavigate();
+  const [filterOpened, setFilterOpened] = useState<boolean>(false);
+  const popularFilters = [
+    "Single Bed",
+    "Double Bed",
+    "Luxury Room",
+    "Family Suite",
+  ];
+  const priceRange = [
+    "$0 to 500",
+    "$500 to 1000",
+    "$1000 to 2000",
+    "$2000 to 3000",
+  ];
+  const sortBy = ["Price Low to High", "Price High to Low", "Newest First"];
   return (
     <div className="flex flex-col-reverse lg:flex-row items-start justify-between min-h-screen bg-gray-100 pt-28 md:pt-35 px-4 md:px-16 lg:px-24 xl:px-32">
       {/* Room list */}
@@ -30,7 +45,12 @@ const AllRooms = () => {
             />
             <div>
               <h3 className="text-gray-600 mb-1.5">Dhaka</h3>
-              <h1 className="font-bold text-2xl mb-1.5 cursor-pointer" onClick={() => navigate(`/rooms/${room._id}`)}>{room.hotel.name}</h1>
+              <h1
+                className="font-bold text-2xl mb-1.5 cursor-pointer"
+                onClick={() => navigate(`/rooms/${room._id}`)}
+              >
+                {room.hotel.name}
+              </h1>
               <div className="flex items-start mb-3">
                 <Star className="text-yellow-400 fill-yellow-400" />
                 <Star className="text-yellow-400 fill-yellow-400" />
@@ -40,7 +60,7 @@ const AllRooms = () => {
                 <span className="ml-2">200+ reviews</span>
               </div>
               <div className="flex items-center mb-3">
-                <MapPin className="h-5" /> 36/A, Kafrul, Dhaka
+                <MapPin className="h-5" /> <span className="text-sm">36/A, Kafrul, Dhaka</span>
               </div>
               <div className="flex flex-wrap gap-3 items-center mb-4 ">
                 {room.amenities.map((amenity, id) => (
@@ -66,37 +86,75 @@ const AllRooms = () => {
       </div>
       {/* filters */}
       <div className="w-full lg:w-1/4 bg-white p-6 rounded-lg shadow-md mb-6 lg:mb-0">
-        <h2 className="text-xl font-semibold mb-4">Filters</h2>
-        <form>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Price Range
-            </label>
-            <input
-              type="range"
-              min="0"
-              max="1000"
-              className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm font-medium text-gray-700 mb-2">
-              Rating
-            </label>
-            <select className="w-full p-2 border border-gray-300 rounded-lg">
-              <option value="">Any</option>
-              <option value="5">5 Stars</option>
-              <option value="4">4 Stars</option>
-              <option value="3">3 Stars</option>
-            </select>
-          </div>
-          <button
-            type="submit"
-            className="w-full bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition duration-300"
+        <div
+          className={` flex items-center justify-between ${
+            filterOpened && "border-b mb-4 pb-3"
+          } lg:border-b lg:mb-4 lg:pb-3`}
+        >
+          <h2 className="text-base font-semibold">Filters</h2>
+          <span
+            className="lg:hidden text-xs"
+            onClick={() => setFilterOpened(!filterOpened)}
           >
-            Apply Filters
-          </button>
-        </form>
+            {filterOpened ? "Hide" : "Show"}
+          </span>
+          <span className="hidden lg:block cursor-pointer text-sm">Clear</span>
+        </div>
+
+        <div
+          className={`${
+            filterOpened ? "block" : "hidden lg:block"
+          } transition-all duration-700`}
+        >
+          <div>
+            <p className="font-semibold text-gray-800 pb-2 my-3">
+              Popular Filters
+            </p>
+
+            {popularFilters.map((filter) => (
+              <div key={filter} className="space-y-4">
+                <input
+                  type="checkbox"
+                  name={filter}
+                  id={filter}
+                  className=" cursor-pointer"
+                />
+                <label htmlFor={filter} className="ml-3 cursor-pointer text-sm">
+                  {filter}
+                </label>
+              </div>
+            ))}
+          </div>
+          <div>
+            <p className="font-semibold text-gray-800 pb-2 my-3">Price Range</p>
+
+            {priceRange.map((filter) => (
+              <div key={filter} className="space-y-4">
+                <input
+                  type="checkbox"
+                  name={filter}
+                  id={filter}
+                  className=" cursor-pointer"
+                />
+                <label htmlFor={filter} className="ml-3 cursor-pointer text-sm">
+                  {filter}
+                </label>
+              </div>
+            ))}
+          </div>
+          <div>
+            <p className="font-semibold text-gray-800 pb-2 my-3">Sort By</p>
+
+            {sortBy.map((filter) => (
+              <div key={filter} className="space-y-4">
+                <input type="radio" name="sort" id={filter} className="cursor-pointer" />
+                <label htmlFor={filter} className="ml-3 cursor-pointer text-sm">
+                  {filter}
+                </label>
+              </div>
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   );

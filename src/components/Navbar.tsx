@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { Search } from "lucide-react";
+import { BookIcon, Search } from "lucide-react";
 import {
   SignedIn,
   SignedOut,
@@ -39,19 +39,13 @@ const Navbar = () => {
             />
           </a>
         ))}
-        <button
-          className={
-            "border border-black px-2 lg:px-4 py-1 text-sm font-light rounded-full cursor-pointer transition-all"
-          }
-        >
-          Dashboard
-        </button>
+        
       </div>
 
       {/* Desktop Right */}
       <div className="hidden md:flex items-center gap-3 lg:gap-6">
         <div className="relative">
-          <Search className="lg:absolute top-1.5 left-2 mr-4 text-white lg:text-gray-500" />
+          <Search className="lg:absolute top-1.5 left-2 mr-4 text-black lg:text-gray-500" />
           <Input
             type="text"
             placeholder="Search..."
@@ -66,7 +60,17 @@ const Navbar = () => {
           </SignInButton>
         </SignedOut>
         <SignedIn>
-          <UserButton />
+          <UserButton>
+            <UserButton.MenuItems>
+              <UserButton.Action
+                label="My Bookings"
+                labelIcon={<BookIcon className="h-4 w-4" />}
+                onClick={() => {
+                  window.location.href = "/my-bookings";
+                }}
+              />
+            </UserButton.MenuItems>
+          </UserButton>
         </SignedIn>
       </div>
 

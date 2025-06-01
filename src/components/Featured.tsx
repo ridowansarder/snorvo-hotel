@@ -24,7 +24,7 @@ const Featured = () => {
             <div
               key={room._id}
               className="hover:shadow-lg hover:scale-105 transition duration-300 cursor-pointer"
-              onClick={() => navigate(`/rooms/${room._id}`)}
+              onClick={() => { navigate(`/rooms/${room._id}`); window.scrollTo(0, 0); }}
             >
               <div className="border rounded-lg overflow-hidden shadow-sm">
                 <img
@@ -55,7 +55,6 @@ const Featured = () => {
                         ${room.pricePerNight}
                       </span>
                     </div>
-
                     <Button className="cursor-pointer">Book now</Button>
                   </div>
                 </div>
