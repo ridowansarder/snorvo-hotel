@@ -28,17 +28,16 @@ Check out the app: [Snorvo Hotel Booking App](https://snorvo-hotel.vercel.app/)
 
 Clone the repository and install dependencies:
 
-sh
+```
 git clone https://github.com/your-username/hotel-booking-app.git
 cd hotel-booking-app
 npm install
-
+```
 
 Start the development server:
-
-sh
+```
 npm run dev
-
+```
 
 ## 🤝 Contribution
 
